@@ -1,0 +1,93 @@
+<!--
+  Djuranatomi Spelet
+  Copyright (c) 2026 Torbjörn Nilsson och DSS Maja Blomqvist
+  SPDX-License-Identifier: EUPL-1.2
+-->
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DjuranatomiSpelet.MainWindow"
+        Icon="/Assets/icon.ico"
+        Title="Djuranatomi Spelet" Width="1280" Height="720" MinWidth="640" MinHeight="360"
+        WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FFF8F0">
+    <!-- The whole screen is laid out on a fixed 1920x1080 surface and scaled uniformly,
+         so it looks the same on a small laptop, a large monitor and a projector. -->
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1920" Height="1080" ColumnDefinitions="*,520">
+
+            <!-- Board: the animal image + spaces -->
+            <DockPanel Grid.Column="0" Margin="10">
+                <WrapPanel x:Name="LegendPanel" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,8,0,0" />
+                <Viewbox x:Name="BoardHost" Stretch="Uniform" />
+            </DockPanel>
+
+            <!-- Teacher panel -->
+            <Border Grid.Column="1" Background="White" BorderBrush="#E0D6CC" BorderThickness="2,0,0,0" Padding="20">
+                <DockPanel LastChildFill="True">
+
+                    <!-- Whose turn + players -->
+                    <StackPanel DockPanel.Dock="Top">
+                        <TextBlock x:Name="TurnText" FontSize="34" FontWeight="Black" TextWrapping="Wrap" Foreground="#3B2F2F" />
+                        <WrapPanel x:Name="PlayersPanel" Margin="0,8,0,12" />
+                    </StackPanel>
+
+                    <!-- Die + roll -->
+                    <Grid DockPanel.Dock="Top" Margin="0,0,0,12" ColumnDefinitions="Auto,*">
+                        <Canvas x:Name="DieCanvas" Width="110" Height="110" Margin="0,0,16,0" />
+                        <Button x:Name="RollButton" Grid.Column="1" Content="Slå tärningen  [Mellanslag]" Theme="{StaticResource BigButton}"
+                                Background="#3D5A80" FontSize="26" VerticalAlignment="Stretch" Click="Roll_Click" />
+                    </Grid>
+
+                    <!-- Judge buttons -->
+                    <StackPanel DockPanel.Dock="Bottom">
+                        <TextBlock x:Name="FeedbackText" FontSize="22" FontWeight="SemiBold" TextWrapping="Wrap"
+                                   Margin="0,0,0,8" MinHeight="30" />
+                        <Button x:Name="ShowAnswerButton" Content="Visa svar  [S]" Theme="{StaticResource BigButton}"
+                                Background="#F4A261" Click="ShowAnswer_Click" />
+                        <UniformGrid Columns="2">
+                            <Button x:Name="CorrectButton" Content="✔ Rätt  [R]" Theme="{StaticResource BigButton}"
+                                    Background="#16A34A" FontSize="24" Click="Correct_Click" />
+                            <Button x:Name="WrongButton" Content="✘ Fel  [F]" Theme="{StaticResource BigButton}"
+                                    Background="#D62828" FontSize="24" Click="Wrong_Click" />
+                        </UniformGrid>
+                        <Button x:Name="NewQuestionButton" Content="↻ Annan fråga  [A]" Theme="{StaticResource BigButton}"
+                                Background="#6C757D" FontSize="16" Padding="10,6" Click="NewQuestion_Click" />
+                        <TextBlock Text="F11 = helskärm" FontSize="12" Foreground="#999" HorizontalAlignment="Center" Margin="0,6,0,0" />
+                    </StackPanel>
+
+                    <!-- Question card -->
+                    <Border x:Name="QuestionCard" CornerRadius="16" BorderThickness="4" Padding="20" Background="#FFFDF8">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <Border x:Name="PartBadge" CornerRadius="8" Padding="12,4" HorizontalAlignment="Left" Margin="0,0,0,12">
+                                    <TextBlock x:Name="PartBadgeText" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" />
+                                </Border>
+                                <TextBlock x:Name="QuestionText" FontSize="32" FontWeight="SemiBold" TextWrapping="Wrap" Foreground="#222" />
+                                <Border x:Name="AnswerBox" Background="#EAF7EE" CornerRadius="10" Padding="14" Margin="0,20,0,0" IsVisible="False">
+                                    <StackPanel>
+                                        <TextBlock Text="SVAR" FontSize="16" FontWeight="Bold" Foreground="#16A34A" />
+                                        <TextBlock x:Name="AnswerText" FontSize="30" FontWeight="Bold" TextWrapping="Wrap" Foreground="#14532D" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </DockPanel>
+            </Border>
+
+            <!-- Winner overlay -->
+            <Grid x:Name="WinnerOverlay" Grid.ColumnSpan="2" Background="#CC000000" IsVisible="False">
+                <Border Background="White" CornerRadius="24" Padding="60,40" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Text="VINNARE!" FontSize="36" FontWeight="Black" Foreground="#F59E0B" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="WinnerText" FontSize="64" FontWeight="Black" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
+                        <TextBlock Text="kom först i mål!" FontSize="28" HorizontalAlignment="Center" Margin="0,4,0,24" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="Nytt spel" Theme="{StaticResource BigButton}" Background="#2A9D8F" Click="NewGame_Click" />
+                            <Button Content="Stäng" Theme="{StaticResource BigButton}" Background="#6C757D" Click="Close_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

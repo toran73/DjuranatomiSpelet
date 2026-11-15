@@ -1,0 +1,61 @@
+<!--
+  Djuranatomi Spelet
+  Copyright (c) 2026 Torbjörn Nilsson och DSS Maja Blomqvist
+  SPDX-License-Identifier: EUPL-1.2
+-->
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DjuranatomiSpelet.SetupWindow"
+        Icon="/Assets/icon.ico"
+        Title="Djuranatomi Spelet – Nytt spel" Width="720" Height="860" MinWidth="520" MinHeight="420"
+        WindowStartupLocation="CenterScreen" Background="#FFF8F0">
+    <DockPanel Margin="24,16,24,16">
+        <TextBlock DockPanel.Dock="Top" Text="Djuranatomi Spelet" FontSize="40" FontWeight="Black"
+                   Foreground="#3B2F2F" HorizontalAlignment="Center" Margin="0,0,0,4" />
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Foreground="#5C4D4D" Margin="0,0,0,12"
+                   Text="Gå genom djurets kroppsdelar från start till mål och testa spelarnas anatomikunskap.&#10;Läraren styr och bedömmer det muntliga svaret på frågorna." />
+
+        <StackPanel DockPanel.Dock="Bottom">
+            <Button x:Name="StartButton" Content="Starta spelet" Theme="{StaticResource BigButton}"
+                    Background="#2A9D8F" FontSize="26" Click="Start_Click" IsDefault="True" />
+            <TextBlock FontSize="13" Foreground="#5C4D4D" TextWrapping="Wrap" TextAlignment="Center"
+                       HorizontalAlignment="Center" Margin="0,10,0,0"
+                       Text="Copyright © 2026 Torbjörn Nilsson och DSS Maja Blomqvist" />
+            <TextBlock FontSize="12" Foreground="#888" TextWrapping="Wrap" TextAlignment="Center"
+                       HorizontalAlignment="Center" Margin="0,2,0,0"
+                       Text="Fri programvara under licensen EUPL-1.2 (European Union Public Licence)." />
+            <TextBlock FontSize="12" Foreground="#888" TextWrapping="Wrap" TextAlignment="Center"
+                       HorizontalAlignment="Center" Margin="0,2,0,0"
+                       Text="Utvecklad med hjälp av AI-assistenten Claude (Anthropic)." />
+            <TextBlock x:Name="DbInfo" FontSize="12" Foreground="#888" TextWrapping="Wrap"
+                       HorizontalAlignment="Center" Margin="0,8,0,0" />
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,8">
+            <StackPanel Margin="0,0,12,0">
+                <TextBlock Text="Djur" FontSize="20" FontWeight="SemiBold" />
+                <ComboBox x:Name="AnimalBox" FontSize="20" Margin="0,6,0,6" HorizontalAlignment="Stretch" />
+                <WrapPanel Margin="0,0,0,18">
+                    <Button Content="+ Nytt djur…" Theme="{StaticResource BigButton}" FontSize="15" Padding="12,6" Background="#2A9D8F" Click="NewAnimal_Click" />
+                    <Button x:Name="EditBoardButton" Content="Redigera bild &amp; rutor…" Theme="{StaticResource BigButton}" FontSize="15" Padding="12,6" Background="#3D5A80" Click="EditBoard_Click" />
+                    <Button x:Name="EditQuestionsButton" Content="Redigera frågor…" Theme="{StaticResource BigButton}" FontSize="15" Padding="12,6" Background="#3D5A80" Click="EditQuestions_Click" />
+                    <Button x:Name="DeleteAnimalButton" Content="Ta bort djur" Theme="{StaticResource BigButton}" FontSize="15" Padding="12,6" Background="#D62828" Click="DeleteAnimal_Click" />
+                </WrapPanel>
+
+                <TextBlock Text="Antal spelare" FontSize="20" FontWeight="SemiBold" />
+                <ComboBox x:Name="PlayerCountBox" FontSize="20" Width="120" Margin="0,6,0,16" />
+
+                <TextBlock Text="Namn (spelare eller lag)" FontSize="20" FontWeight="SemiBold" />
+                <StackPanel x:Name="NamesPanel" Margin="0,6,0,16" />
+
+                <TextBlock Text="Svårighetsgrad" FontSize="20" FontWeight="SemiBold" />
+                <WrapPanel Margin="0,6,0,0">
+                    <RadioButton x:Name="EasyRadio" Content="Lätt" FontSize="20" Margin="0,0,24,0" IsChecked="True" GroupName="Diff" />
+                    <RadioButton x:Name="MediumRadio" Content="Medel" FontSize="20" Margin="0,0,24,0" GroupName="Diff" />
+                    <RadioButton x:Name="HardRadio" Content="Svår" FontSize="20" Margin="0,0,24,0" GroupName="Diff" />
+                    <RadioButton x:Name="MixedRadio" Content="Blandat" FontSize="20" GroupName="Diff" />
+                </WrapPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

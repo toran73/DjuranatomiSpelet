@@ -1,0 +1,95 @@
+<!--
+  Djuranatomi Spelet
+  Copyright (c) 2026 Torbjörn Nilsson och DSS Maja Blomqvist
+  SPDX-License-Identifier: EUPL-1.2
+-->
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DjuranatomiSpelet.QuestionEditorWindow"
+        Icon="/Assets/icon.ico"
+        Title="Djuranatomi Spelet – Frågor" Width="1250" Height="800" MinWidth="700" MinHeight="400"
+        WindowStartupLocation="CenterOwner" Background="#FFF8F0">
+    <DockPanel Margin="16">
+        <TextBlock x:Name="HeaderText" DockPanel.Dock="Top" FontSize="26" FontWeight="Black" Foreground="#3B2F2F" Margin="0,0,0,10" />
+
+        <WrapPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+            <TextBlock Text="Visa:" FontSize="16" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <ComboBox x:Name="FilterBox" FontSize="16" Width="200" VerticalAlignment="Center" />
+            <Button Content="+ Ny fråga" Theme="{StaticResource BigButton}" HorizontalAlignment="Left" FontSize="16" Padding="12,6"
+                    Background="#2A9D8F" Margin="16,4,4,4" Click="Add_Click" />
+            <Button Content="Ta bort markerade" Theme="{StaticResource BigButton}" HorizontalAlignment="Left" FontSize="16" Padding="12,6"
+                    Background="#D62828" Click="Delete_Click" />
+            <Button Content="Importera CSV…" Theme="{StaticResource BigButton}" HorizontalAlignment="Left" FontSize="16" Padding="12,6"
+                    Background="#3D5A80" Margin="16,4,4,4" Click="Import_Click" />
+            <Button Content="Exportera CSV…" Theme="{StaticResource BigButton}" HorizontalAlignment="Left" FontSize="16" Padding="12,6"
+                    Background="#3D5A80" Click="Export_Click" />
+        </WrapPanel>
+
+        <DockPanel DockPanel.Dock="Bottom" Margin="0,10,0,0">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button Content="Spara" Theme="{StaticResource BigButton}" Background="#16A34A" Click="Save_Click" />
+                <Button Content="Stäng" Theme="{StaticResource BigButton}" Background="#6C757D" Click="Close_Click" />
+            </StackPanel>
+            <TextBlock x:Name="StatusText" FontSize="13" Foreground="#666" VerticalAlignment="Center" TextWrapping="Wrap" />
+        </DockPanel>
+
+        <!-- Double-click (or F2) a cell to edit it. -->
+        <DataGrid x:Name="QuestionGrid" AutoGenerateColumns="False" CanUserResizeColumns="True" CanUserReorderColumns="False"
+                  SelectionMode="Extended" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                  FontSize="15" Background="White" BorderBrush="#E0D6CC" BorderThickness="1">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Kroppsdel" Width="160">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PartName}" VerticalAlignment="Center" Margin="8,4" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Parts}" SelectedItem="{Binding Part}" HorizontalAlignment="Stretch" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Svårighet" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DifficultyName}" VerticalAlignment="Center" Margin="8,4" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Difficulties}" SelectedItem="{Binding Difficulty}" HorizontalAlignment="Stretch" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Fråga" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="8,4" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Text}" TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Svar" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Answer}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="8,4" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Answer}" TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

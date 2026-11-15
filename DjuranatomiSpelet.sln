@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DjuranatomiSpelet", "DjuranatomiSpelet\DjuranatomiSpelet.csproj", "{7C2B5E1A-3D4F-4A8B-9E21-6B5D8C9F0A12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DjuranatomiSpelet.Core", "DjuranatomiSpelet.Core\DjuranatomiSpelet.Core.csproj", "{19F01CD0-055D-4812-A407-3DEF980317C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19F01CD0-055D-4812-A407-3DEF980317C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F01CD0-055D-4812-A407-3DEF980317C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F01CD0-055D-4812-A407-3DEF980317C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F01CD0-055D-4812-A407-3DEF980317C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2B5E1A-3D4F-4A8B-9E21-6B5D8C9F0A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2B5E1A-3D4F-4A8B-9E21-6B5D8C9F0A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2B5E1A-3D4F-4A8B-9E21-6B5D8C9F0A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2B5E1A-3D4F-4A8B-9E21-6B5D8C9F0A12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

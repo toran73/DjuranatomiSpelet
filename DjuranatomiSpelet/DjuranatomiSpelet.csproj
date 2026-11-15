@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>DjuranatomiSpelet</RootNamespace>
+    <AssemblyName>DjuranatomiSpelet</AssemblyName>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+    <Product>Djuranatomi Spelet</Product>
+    <Authors>Torbjörn Nilsson, DSS Maja Blomqvist</Authors>
+    <Copyright>Copyright (c) 2026 Torbjörn Nilsson och DSS Maja Blomqvist</Copyright>
+    <PackageLicenseExpression>EUPL-1.2</PackageLicenseExpression>
+    <ApplicationIcon>Assets/icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AvaloniaVersion>11.2.3</AvaloniaVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DjuranatomiSpelet.Core\DjuranatomiSpelet.Core.csproj" />
+  </ItemGroup>
+
+</Project>

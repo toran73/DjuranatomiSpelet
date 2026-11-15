@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>DjuranatomiSpelet.Core</RootNamespace>
+    <Product>Djuranatomi Spelet</Product>
+    <Authors>Torbjörn Nilsson, DSS Maja Blomqvist</Authors>
+    <Copyright>Copyright (c) 2026 Torbjörn Nilsson och DSS Maja Blomqvist</Copyright>
+    <PackageLicenseExpression>EUPL-1.2</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Example image used for the built-in example animal. -->
+    <EmbeddedResource Include="Resources\hund.png" LogicalName="DjuranatomiSpelet.Core.hund.png" />
+  </ItemGroup>
+
+</Project>

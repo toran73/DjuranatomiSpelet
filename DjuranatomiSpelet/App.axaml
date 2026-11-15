@@ -1,0 +1,47 @@
+<!--
+  Djuranatomi Spelet
+  Copyright (c) 2026 Torbjörn Nilsson och DSS Maja Blomqvist
+  SPDX-License-Identifier: EUPL-1.2
+-->
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="DjuranatomiSpelet.App"
+             RequestedThemeVariant="Light">
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+    </Application.Styles>
+
+    <Application.Resources>
+        <!-- Big, flat, coloured buttons. Use: Theme="{StaticResource BigButton}" Background="#..." -->
+        <ControlTheme x:Key="BigButton" TargetType="Button">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="18,10" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#3D5A80" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover">
+                <Setter Property="Opacity" Value="0.85" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Opacity" Value="0.7" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Opacity" Value="0.3" />
+            </Style>
+        </ControlTheme>
+    </Application.Resources>
+</Application>
